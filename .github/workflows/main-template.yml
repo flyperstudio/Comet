@@ -8,6 +8,7 @@ on:
     paths:
       - "templates/**"
       - ".github/workflows/main-template.yml"
+      - "*.md"
 
   workflow_dispatch:
 
