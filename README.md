@@ -1,10 +1,10 @@
 <img src="https://repobeats.axiom.co/api/embed/f917a77cbbdeee19b87fa1f2f932895d1df18b56.svg" />
 
 # Comet ☄️
-
-[![dev-build](https://github.com/dotnet/Comet/actions/workflows/dev.yml/badge.svg)](https://github.com/dotnet/Comet/actions/workflows/dev.yml)  [![Clancey.Comet on fuget.org](https://www.fuget.org/packages/Clancey.Comet/badge.svg)](https://www.fuget.org/packages/Clancey.Comet)
+[![dev-build](https://github.com/dotnet/Comet/actions/workflows/dev.yml/badge.svg)](https://github.com/dotnet/Comet/actions/workflows/dev.yml)  [![Clancey.Comet on fuget.org](https://www.fuget.org/packages/FlyperStudio.Comet/badge.svg)](https://www.fuget.org/packages/FlyperStudio.Comet)
 [Chat on Discord](https://discord.gg/7Ms7ptM)
 
+**This is a fork of Comet as it current under maintain for now**
 
 What is Comet? Comet is a modern way of writing cross-platform UIs. Based on [.NET MAUI](https://docs.microsoft.com/en-us/dotnet/maui/what-is-maui), it follows the Model View Update (MVU) pattern and magically databinds for you!
 
