@@ -22,7 +22,7 @@ namespace Comet.Tests
 			var handler = view.ViewHandler;
 			if (handler == null)
 			{
-				var v = view.ReplacedView;
+				//var v = view.ReplacedView;
 				handler = UI.Handlers.GetHandler(view.GetType());
 				view.ViewHandler = handler;
 				handler.SetVirtualView(view);
@@ -50,10 +50,10 @@ namespace Comet.Tests
 		public static void InitializeHandlers(View view, float width, float height)
 		{
 			InitializeHandlers(view);
-			var frame = new Rectangle(0, 0, width, height);
+			var frame = new Rect(0, 0, width, height);
 			var iView = (IView)view;
 			iView.Measure(frame.Width, frame.Height);
-			iView.Arrange(new Rectangle(0, 0, width, height));
+			iView.Arrange(new Rect(0, 0, width, height));
 		}
 		
 		public static void ResetComet()
