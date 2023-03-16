@@ -136,7 +136,7 @@ namespace Comet.Tests
 			view.SetViewHandlerToGeneric();
 
 			for (int i = 1; i < 10; ++i)
-			{				
+			{
 				Assert.Equal(text.Value.CurrentValue, $"{i}");
 				Assert.Equal(text1.Value.CurrentValue, $"{i}");
 				view.clickCount.Value++;
