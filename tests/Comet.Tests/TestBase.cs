@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Maui.Graphics;
 using Comet.Internal;
 using Xunit;
@@ -22,7 +22,7 @@ namespace Comet.Tests
 			var handler = view.ViewHandler;
 			if (handler == null)
 			{
-				//var v = view.ReplacedView;
+				var v = view.ReplacedView;
 				handler = UI.Handlers.GetHandler(view.GetType());
 				view.ViewHandler = handler;
 				handler.SetVirtualView(view);

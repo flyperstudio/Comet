@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -428,7 +428,8 @@ namespace Comet
 					//Get the current MauiContext
 					//I might be able to do something better, like searching up though the parent
 					//Maybe I can do something where I get the current Context whenever I build
-					var mauiContext = this.ViewHandler?.MauiContext ?? CometApp.CurrentWindow?.MauiContext;
+					//In test project, we don't assign the CurrentWindows to have the MauiContext
+					var mauiContext = GetMauiContext();
 					if (mauiContext != null)
 					{
 						var type = this.GetType();
