@@ -595,7 +595,7 @@ namespace Comet
 		public Size Measure(double widthConstraint, double heightConstraint)
 		{
 
- 			if (BuiltView != null)
+			if (BuiltView != null)
 				return MeasuredSize = BuiltView.Measure(widthConstraint, heightConstraint);
 
 			var availableSize = new Size(widthConstraint, heightConstraint);
@@ -623,7 +623,7 @@ namespace Comet
 				BuiltView.LayoutSubviews(frame);
 			else if (this is ContainerView container)
 			{
-				foreach(var view in container)
+				foreach (var view in container)
 				{
 					view.LayoutSubviews(this.Frame);
 				}
@@ -801,8 +801,9 @@ namespace Comet
 			//Measure(new Size(widthConstraint, heightConstraint));
 			Measure(widthConstraint, heightConstraint);
 		void IView.InvalidateMeasure() => InvalidateMeasurement();
-		void IView.InvalidateArrange() {}
-		void IHotReloadableView.TransferState(IView newView) {
+		void IView.InvalidateArrange() { }
+		void IHotReloadableView.TransferState(IView newView)
+		{
 			var oldState = this.GetState();
 			if (oldState == null)
 				return;

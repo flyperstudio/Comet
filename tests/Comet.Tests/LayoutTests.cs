@@ -22,11 +22,11 @@ namespace Comet.Tests
 			.Padding(new Thickness())
 			.Tag("stack");
 		}
-		
+
 		[Fact]
 		public void TextInVStackIsFullWidth()
 		{
-			var view = new TextInVStackTestView();			
+			var view = new TextInVStackTestView();
 			InitializeHandlers(view, 320, 600);
 
 			var stack = view.GetViewWithTag("stack");
@@ -36,7 +36,7 @@ namespace Comet.Tests
 			Assert.Equal(new Rect(0, 0, 320, 12), stack.Frame);
 			Assert.Equal(new Rect(0, 0, 40, 12), text.Frame);
 		}
-		
+
 		public class TextFieldInVStackTestView : View
 		{
 			public readonly State<string> text = "Test";
@@ -50,7 +50,7 @@ namespace Comet.Tests
 			.Padding(new Thickness())
 			.Tag("stack");
 		}
-		
+
 		[Fact]
 		public void TextFieldInVStackIsFullWidth()
 		{
@@ -59,12 +59,12 @@ namespace Comet.Tests
 
 			var stack = view.GetViewWithTag("stack");
 			var textfield = view.GetViewWithTag("textfield");
-			
+
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 12), stack.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 12), textfield.Frame);
 		}
-		
+
 		public class SecureFieldInVStackTestView : View
 		{
 			public readonly State<string> text = "Test";
@@ -78,7 +78,7 @@ namespace Comet.Tests
 			.Padding(new Thickness())
 			.Tag("stack");
 		}
-		
+
 		[Fact]
 		public void SecureFieldInVStackIsFullWidth()
 		{
@@ -87,12 +87,12 @@ namespace Comet.Tests
 
 			var stack = view.GetViewWithTag("stack");
 			var securefield = view.GetViewWithTag("securefield");
-			
+
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 12), stack.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 12), securefield.Frame);
 		}
-		
+
 		public class SliderInVStackTestView : View
 		{
 			[Body]
@@ -104,7 +104,7 @@ namespace Comet.Tests
 			.Padding(new Thickness())
 			.Tag("stack");
 		}
-		
+
 		[Fact]
 		public void SliderInVStackIsFullWidth()
 		{
@@ -113,12 +113,12 @@ namespace Comet.Tests
 
 			var stack = view.GetViewWithTag("stack");
 			var slider = view.GetViewWithTag("slider");
-			
+
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 20), stack.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 20), slider.Frame);
 		}
-		
+
 		public class ProgressBarInVStackTestView : View
 		{
 			[Body]
@@ -130,7 +130,7 @@ namespace Comet.Tests
 			.Padding(new Thickness())
 			.Tag("stack");
 		}
-		
+
 		[Fact]
 		public void ProgressBarInVStackIsFullWidth()
 		{
@@ -139,34 +139,34 @@ namespace Comet.Tests
 
 			var stack = view.GetViewWithTag("stack");
 			var progressbar = view.GetViewWithTag("progressbar");
-			
+
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 20), stack.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 20), progressbar.Frame);
 		}
-		
+
 		[Fact]
 		public void ComboBoxInVStackDefaultsToAMinimumWidth()
 		{
-			
+
 		}
-		
+
 		[Fact]
 		public void ButtonInVStackDefaultsToAMinimumWidth()
 		{
-			
+
 		}
-		
+
 		[Fact]
 		public void LabelInHStackIsCenterAlignedVertically()
 		{
-			
+
 		}
-		
+
 		[Fact]
 		public void ListViewInAVStackTakesRemainingHeight()
 		{
-			
+
 		}
 	}
 }
