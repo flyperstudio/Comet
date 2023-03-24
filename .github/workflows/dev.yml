@@ -50,7 +50,13 @@ jobs:
         run: |
           & dotnet workload install maui `
             --skip-sign-check `
-        
+      
+      - name: Restore Comet-Nuget.sln
+        run: msbuild /r build/Comet-Tests.sln
+
+      - name: Build Comet-Nuget.sln
+        run: msbuild build/Comet-Tests.sln
+
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
 
