@@ -51,6 +51,15 @@ jobs:
           & dotnet workload install maui `
             --skip-sign-check `
 
+      - name: Run tests
+        run: dotnet test /r build/Comet-Tests.sln  --logger trx --results-directory "TestResults"
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test result
+          path: TestResults
+
       - name: Restore Comet-Nuget.sln
         run: msbuild /r build/Comet-Nuget.sln
 
@@ -82,11 +91,3 @@ jobs:
             **\*.snupkg
             **\*.symbols.nupkg
 
-      # - name: Restore Comet-Tests.sln
-      #   run: nuget restore build/Comet-Tests.sln
-
-      # - name: Build Tests Project
-      #   run: msbuild tests/Comet.Tests/Comet.Tests.csproj /p:Configuration=Release
-
-      # - name: Run Tests Project
-      #   run: dotnet test tests/Comet.Tests/Comet.Tests.csproj
