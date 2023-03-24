@@ -47,7 +47,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Clancey.Comet" Version="0.3.466-beta" />
+		<PackageReference Include="FlyperStudio.Comet" Version="0.4.338-beta" />
 		<PackageReference Include="Reloadify3000" Version="1.0.8" />
 	</ItemGroup>
 

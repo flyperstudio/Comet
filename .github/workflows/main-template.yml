@@ -8,6 +8,7 @@ on:
     paths:
       - "templates/**"
       - ".github/workflows/main-template.yml"
+      - "*.md"
 
   workflow_dispatch:
 
@@ -80,4 +81,4 @@ jobs:
 
       - name: Push nuget to Nuget.org
         run: |
-          nuget push nuget-artifact\*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{ secrets.NUGET_ORG_API_KEY }} -SkipDuplicate
+          nuget push nuget-artifact\*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{ secrets.NUGET_API_KEY }} -SkipDuplicate
