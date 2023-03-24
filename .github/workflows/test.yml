@@ -18,7 +18,7 @@ jobs:
       - name: Install Maui Workload
         shell: bash
         run: |
-          dotnet workload install maui
+          dotnet workload install maui-ios maui-android maui-maccatalyst maui-tizen
           dotnet workload list
 
       - name: Run tests
