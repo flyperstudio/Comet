@@ -21,7 +21,7 @@ jobs:
           dotnet workload install maui
           dotnet workload list
           dotnet tool install -g Redth.Net.Maui.Check
-          maui-check
+          maui-check --skip openjdk --skip androidsdk
 
 
       - name: Run tests
