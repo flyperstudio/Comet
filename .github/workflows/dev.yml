@@ -29,13 +29,14 @@ jobs:
         with:
           distribution: "zulu" # See 'Supported distributions' for available options
           java-version: "11"
-
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3.0.3
-        
+          
       - name: install .NET
         shell: pwsh
-        run: dotnet --list-sdks
+        run: |
+          $ProgressPreference = 'SilentlyContinue'
+          Invoke-WebRequest -Uri "https://dot.net/v1/dotnet-install.ps1" -OutFile dotnet-install.ps1
+          & .\dotnet-install.ps1 -InstallDir "$env:ProgramFiles\dotnet\" -Verbose -Channel STS
+          & dotnet --list-sdks
 
       # - name: Install Visual Studio Preview
       #   shell: pwsh
@@ -49,12 +50,6 @@ jobs:
         run: |
           & dotnet workload install maui `
             --skip-sign-check `
-            
-      - name: Restore Comet-Tests.sln
-        run: msbuild /r build/Comet-Tests.sln
-        
-      - name: Build Comet-Tests.sln
-        run: MSBuild build/Comet-Tests.sln
         
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
