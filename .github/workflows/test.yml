@@ -1,0 +1,31 @@
+name: test-build
+
+on:
+  pull_request:
+    branches: [dev, main]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Test Comet
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3.0.3
+
+      - name: Install Maui Workload
+        run: dotnet workload install maui --skip-sign-check
+
+      - name: Run tests
+        run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test result
+          path: TestResults
