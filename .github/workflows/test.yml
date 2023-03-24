@@ -15,11 +15,11 @@ jobs:
         with:
           submodules: true
 
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3.0.3
-
       - name: Install Maui Workload
-        run: dotnet workload install maui --skip-sign-check
+        shell: bash
+        run: |
+          dotnet workload install maui
+          dotnet workload list
 
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
