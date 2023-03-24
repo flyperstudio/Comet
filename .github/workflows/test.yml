@@ -18,8 +18,11 @@ jobs:
       - name: Install Maui Workload
         shell: bash
         run: |
-          dotnet workload install maui-ios maui-android maui-maccatalyst maui-tizen
+          dotnet workload install maui
           dotnet workload list
+          dotnet tool install -g Redth.Net.Maui.Check
+          maui-check
+
 
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
