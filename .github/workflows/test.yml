@@ -20,9 +20,9 @@ jobs:
         run: |
           dotnet workload install maui
           dotnet workload list
-          dotnet tool install -g Redth.Net.Maui.Check
-          maui-check --skip openjdk --skip androidsdk
 
+      - name: Build Comet
+        run: dotnet build Comet.sln
 
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
