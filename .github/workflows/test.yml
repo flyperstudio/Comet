@@ -15,12 +15,18 @@ jobs:
         with:
           submodules: true
 
-      - name: Build Maui to setup the environment
-        working-directory: External/Maui
-        run: |
-          dotnet tool restore
-          dotnet cake --target=VS
+#       - name: Build Maui to setup the environment
+#         working-directory: External/Maui
+#         run: |
+#           dotnet tool restore
+#           dotnet cake --target=VS
 
+      - name: Install Maui Workload
+        shell: bash
+        run: |
+          dotnet workload install maui maui-tizen maui-maccatalyst maui-ios maui-android 
+          dotnet workload list
+          
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
 
