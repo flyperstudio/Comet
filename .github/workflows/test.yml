@@ -22,7 +22,7 @@ jobs:
           dotnet workload list
 
       - name: Build Comet
-        run: dotnet build Comet.sln
+        run: dotnet build tests/Comet.Tests/Comet.Tests.csproj -f net7.0
 
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
