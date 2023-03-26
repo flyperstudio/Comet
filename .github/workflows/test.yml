@@ -20,10 +20,11 @@ jobs:
         run: |
           dotnet workload install maui maui-tizen maui-maccatalyst maui-ios maui-android 
           dotnet workload list
-          dotnet workload restore
 
       - name: Build Comet
-        run: dotnet build tests/Comet.Tests/Comet.Tests.csproj -f net7.0
+        run: |
+          dotnet workload restore tests/Comet.Tests/Comet.Tests.csproj
+          dotnet build tests/Comet.Tests/Comet.Tests.csproj
 
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
