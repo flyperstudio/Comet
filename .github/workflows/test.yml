@@ -18,13 +18,13 @@ jobs:
       - name: Install Maui Workload
         shell: bash
         run: |
-          dotnet workload install maui maui-tizen maui-maccatalyst maui-ios maui-android 
+          dotnet workload install maui-tizen maui-maccatalyst maui-ios maui-android 
           dotnet workload list
 
       - name: Build Comet
         run: |
           dotnet workload restore tests/Comet.Tests/Comet.Tests.csproj
-          dotnet build tests/Comet.Tests/Comet.Tests.csproj
+          dotnet build tests/Comet.Tests/Comet.Tests.csproj -f net7.0
 
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
