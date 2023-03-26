@@ -18,7 +18,6 @@ jobs:
       - name: Install Maui Workload
         shell: bash
         run: |
-          dotnet workload install maui-tizen maui-maccatalyst maui-ios maui-android 
           dotnet workload list
 
       - name: Build Comet
