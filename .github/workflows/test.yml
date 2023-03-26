@@ -27,7 +27,6 @@ jobs:
           dotnet workload install maui maui-tizen maui-maccatalyst maui-ios maui-android 
           dotnet workload list
           dotnet workload restore Comet.sln
-          dotnet restore  Comet.sln
           
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
