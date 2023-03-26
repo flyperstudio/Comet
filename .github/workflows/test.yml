@@ -19,7 +19,7 @@ jobs:
         working-directory: External/Maui
         run: |
           dotnet tool restore
-          dotnet cake --target=VS --workloads=global
+          dotnet cake --target=VS
 
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
