@@ -29,7 +29,9 @@ jobs:
           dotnet workload list
           
       - name: Run tests
-        run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
+        run: |
+          dotnet restore Comet.sln
+          dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
 
       - name: Upload test results
         uses: actions/upload-artifact@v3
