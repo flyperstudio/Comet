@@ -3,18 +3,45 @@ name: dev-build
 #this drops to github with beta tag?
 
 on:
-  # push:
-  #   branches: [dev]
-  #   paths-ignore:
-  #     - "*.md"
+  push:
+    branches: [dev]
+    paths-ignore:
+      - "*.md"
   pull_request:
     branches: [dev, main]
 
   workflow_dispatch:
 
 jobs:
+  test: 
+    name: Test Comet
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Install Maui Workload
+        shell: bash
+        run: |
+          dotnet workload restore build/Comet-Tests.sln
+          curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | sudo bash
+          dotnet workload list
+          
+      - name: Run tests
+        run: |
+          dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
+          dotnet restore build/Comet-Tests.sln
+          dotnet test build/Comet-Tests.sln --logger trx --results-directory "TestResults"
+      - uses: actions/upload-artifact@v2
+        if: success() || failure()
+        with:
+          name: test-results
+          path: '*.trx'
+          
   build:
     name: Build Comet-Nuget
+    needs: test
     env:
       NUPKG_MAJOR: 0.4
       BASE: 334
