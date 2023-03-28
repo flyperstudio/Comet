@@ -15,12 +15,6 @@ jobs:
         with:
           submodules: true
 
-#       - name: Build Maui to setup the environment
-#         working-directory: External/Maui
-#         run: |
-#           dotnet tool restore
-#           dotnet cake --target=VS
-
       - name: Install Maui Workload
         shell: bash
         run: |
@@ -31,12 +25,11 @@ jobs:
       - name: Run tests
         run: |
           dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
-          dotnet nuget list source
           dotnet restore build/Comet-Tests.sln
           dotnet test build/Comet-Tests.sln --logger trx --results-directory "TestResults"
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v2
+        if: success() || failure()
         with:
-          name: Test result
-          path: TestResults
+          name: test-results
+          path: '*.trx'
