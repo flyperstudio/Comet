@@ -27,7 +27,7 @@ jobs:
           dotnet workload install maui maui-tizen maui-maccatalyst maui-ios maui-android
           curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | sudo bash
           dotnet workload list
-          dotnet workload restore Comet.sln
+ #         dotnet workload restore Comet.sln
           
       - name: Run tests
         run: dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
