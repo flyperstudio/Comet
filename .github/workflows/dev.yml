@@ -34,7 +34,6 @@ jobs:
       - uses: dorny/test-reporter@v1
         with:
           name: test-results
-          artifact: test-results
           path: "tests/Comet.Tests/TestResults/test-results.trx"
           reporter: "dotnet-trx"
 
