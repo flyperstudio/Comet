@@ -24,14 +24,14 @@ jobs:
       - name: Install Maui Workload
         shell: bash
         run: |
-          dotnet workload restore Comet.sln
+          dotnet workload restore build/Comet-Tests.sln
           curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | sudo bash
           dotnet workload list
           
       - name: Run tests
         run: |
-          dotnet restore Comet.sln
-          dotnet test tests/Comet.Tests/Comet.Tests.csproj --logger trx --results-directory "TestResults"
+          dotnet restore build/Comet-Tests.sln
+          dotnet test build/Comet-Tests.sln --logger trx --results-directory "TestResults"
 
       - name: Upload test results
         uses: actions/upload-artifact@v3
