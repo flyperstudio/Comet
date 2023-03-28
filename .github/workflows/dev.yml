@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test: 
+  test:
     name: Test Comet
     runs-on: macos-latest
     steps:
@@ -25,20 +25,20 @@ jobs:
           dotnet workload restore build/Comet-Tests.sln
           curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | sudo bash
           dotnet workload list
-          
+
       - name: Run tests
         run: |
           dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
           dotnet restore build/Comet-Tests.sln
           dotnet test build/Comet-Tests.sln --logger "trx;LogFileName=test-results.trx"
-          
+
       - uses: dorny/test-reporter@v1
         with:
           name: test-results
           artifact: test-results
-          path: '*.trx'
-          reporter: 'dotnet-trx'
-          
+          path: "tests/Comet.Tests/TestResults/test-results.trx"
+          reporter: "dotnet-trx"
+
   build:
     name: Build Comet-Nuget
     needs: test
@@ -63,23 +63,8 @@ jobs:
       - name: Install Maui Workload
         shell: pwsh
         run: |
-          dotnet workload restore build/Comet-Tests.sln
-          Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -Proxy $env:HTTP_PROXY -ProxyUseDefaultCredentials -OutFile 'workload-install.ps1';
-          ./workload-install.ps1
-          dotnet workload list
-
-      - name: Restore Comet-Tests.sln
-        run: dotnet restore build/Comet-Tests.sln
-
-      - name: Test Comet-Tests.sln
-        run: dotnet test build/Comet-Tests.sln --logger "trx;LogFileName=test-results.trx"
-
-      - uses: dorny/test-reporter@v1
-        with:
-          name: test-results
-          artifact: test-results
-          path: 'tests/Comet.Tests/TestResults/test-results.trx'
-          reporter: 'dotnet-trx'        
+          & dotnet workload install maui `
+            --skip-sign-check `
 
       - name: Restore Comet-Nuget.sln
         run: msbuild /r build/Comet-Nuget.sln
@@ -111,4 +96,3 @@ jobs:
             **\*.nupkg
             **\*.snupkg
             **\*.symbols.nupkg
-
