@@ -1,7 +1,5 @@
 name: dev-build
 
-#this drops to github with beta tag?
-
 on:
   push:
     branches: [dev]
@@ -32,12 +30,14 @@ jobs:
         run: |
           dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
           dotnet restore build/Comet-Tests.sln
-          dotnet test build/Comet-Tests.sln --logger trx --results-directory "TestResults"
-      - uses: actions/upload-artifact@v2
-        if: success() || failure()
+          dotnet test build/Comet-Tests.sln --logger "trx;LogFileName=test-results.trx"
+          
+      - uses: dorny/test-reporter@v1
         with:
           name: test-results
+          artifact: test-results
           path: '*.trx'
+          reporter: 'dotnet-trx'
           
   build:
     name: Build Comet-Nuget
