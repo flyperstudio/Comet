@@ -28,7 +28,6 @@ jobs:
 
       - name: Run tests
         run: |
-          dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
           dotnet restore build/Comet-Tests.sln
           dotnet test build/Comet-Tests.sln --logger "trx;LogFileName=test-results.trx"
 
