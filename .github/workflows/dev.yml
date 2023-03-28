@@ -56,18 +56,6 @@ jobs:
         with:
           distribution: "zulu" # See 'Supported distributions' for available options
           java-version: "11"
-          
-      - name: install .NET
-        shell: pwsh
-        run: |
-          $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest -Uri "https://dot.net/v1/dotnet-install.ps1" -OutFile dotnet-install.ps1
-          & .\dotnet-install.ps1 -InstallDir "$env:ProgramFiles\dotnet\" -Verbose -Channel STS
-          & dotnet --list-sdks
-
-      # - name: Install Visual Studio Preview
-      #   shell: pwsh
-      #   run: powershell .\build\install-vs.ps1
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
@@ -75,8 +63,23 @@ jobs:
       - name: Install Maui Workload
         shell: pwsh
         run: |
-          & dotnet workload install maui `
-            --skip-sign-check `
+          dotnet workload restore build/Comet-Tests.sln
+          Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -Proxy $env:HTTP_PROXY -ProxyUseDefaultCredentials -OutFile 'workload-install.ps1';
+          ./workload-install.ps1
+          dotnet workload list
+
+      - name: Restore Comet-Tests.sln
+        run: dotnet restore build/Comet-Tests.sln
+
+      - name: Test Comet-Tests.sln
+        run: dotnet test build/Comet-Tests.sln --logger "trx;LogFileName=test-results.trx"
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: test-results
+          artifact: test-results
+          path: 'tests/Comet.Tests/TestResults/test-results.trx'
+          reporter: 'dotnet-trx'        
 
       - name: Restore Comet-Nuget.sln
         run: msbuild /r build/Comet-Nuget.sln
