@@ -1,11 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net7.0</TargetFrameworks>
+        <TargetFramework>net7.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\tests\Comet.Tests\Comet.Tests.csproj" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+        <PackageReference Include="xunit" Version="2.4.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="3.1.2">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="FlyperStudio.Comet" Version="0.4.339-beta" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="FlyperStudio.Comet" Version="0.4.339-beta" />
+      <ProjectReference Include="..\Comet.Tests\Comet.Tests.csproj" />
     </ItemGroup>
 </Project>
