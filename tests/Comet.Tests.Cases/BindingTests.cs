@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Comet.Tests.Handlers;
 using Microsoft.Maui;
 using Xunit;
-namespace Comet.Tests
+namespace Comet.Tests.Cases
 {
 	public class BindingTests : TestBase
 	{

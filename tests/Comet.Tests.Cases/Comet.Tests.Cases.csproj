@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net7.0</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\tests\Comet.Tests\Comet.Tests.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="FlyperStudio.Comet" Version="0.4.339-beta" />
+    </ItemGroup>
+</Project>
