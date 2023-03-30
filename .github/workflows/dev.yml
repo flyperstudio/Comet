@@ -27,9 +27,7 @@ jobs:
           dotnet workload list
 
       - name: Run tests
-        run: |
-          dotnet restore build/Comet-Tests.sln
-          dotnet test build/Comet-Tests.sln --logger "trx;LogFileName=test-results.trx"
+        run: dotnet test tests/Comet.Tests.Cases/Comet.Tests.Cases.csproj --logger "trx;LogFileName=test-results.trx"
 
       - uses: dorny/test-reporter@v1
         with:
