@@ -2,6 +2,7 @@
 using Comet.Tests.Handlers;
 using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace Comet.Tests.Cases
 {
 	public class ViewTests : TestBase
