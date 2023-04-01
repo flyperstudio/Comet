@@ -87,6 +87,7 @@ jobs:
           dotnet workload restore build/Comet-Nuget.sln
           Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1';
            .\workload-install.ps1
+          dotnet workload install ios
           dotnet workload list
 
       - name: Restore Comet-Nuget.sln
