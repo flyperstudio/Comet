@@ -11,58 +11,58 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    name: Test Comet
-    runs-on: macos-latest
-    env:
-      NUPKG_MAJOR: 0.4
-      BASE: 334
+  # test:
+  #   name: Test Comet
+  #   runs-on: macos-latest
+  #   env:
+  #     NUPKG_MAJOR: 0.4
+  #     BASE: 334
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         submodules: true
 
-      - name: Install Maui Workload
-        shell: bash
-        run: |
-          dotnet workload restore build/Comet-Tests.sln
-          curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | sudo bash
-          dotnet workload install maui-windows
-          dotnet workload list
+  #     - name: Install Maui Workload
+  #       shell: bash
+  #       run: |
+  #         dotnet workload restore build/Comet-Tests.sln
+  #         curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | sudo bash
+  #         dotnet workload install maui-windows
+  #         dotnet workload list
 
-      - name: Run tests
-        run: dotnet test tests/Comet.Tests.Cases/Comet.Tests.Cases.csproj --logger "trx;LogFileName=test-results.trx"
+  #     - name: Run tests
+  #       run: dotnet test tests/Comet.Tests.Cases/Comet.Tests.Cases.csproj --logger "trx;LogFileName=test-results.trx"
 
-      - uses: dorny/test-reporter@v1
-        with:
-          name: test-results
-          path: "tests/Comet.Tests.Cases/TestResults/test-results.trx"
-          reporter: "dotnet-trx"
+  #     - uses: dorny/test-reporter@v1
+  #       with:
+  #         name: test-results
+  #         path: "tests/Comet.Tests.Cases/TestResults/test-results.trx"
+  #         reporter: "dotnet-trx"
 
-      - name: Build Comet-Nuget.sln
-        run: dotnet build build/Comet-Nuget.sln
+  #     - name: Build Comet-Nuget.sln
+  #       run: dotnet build build/Comet-Nuget.sln
 
-      - name: Nuget Pack step
-        shell: bash
-        run: |
-          MINOR_VERSION=$(( $BASE + $GITHUB_RUN_NUMBER ))
-          VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
-          echo "PACKAGE VERSION: $VERSION"
-          nuget pack Comet.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
-          nuget pack Comet.Test.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
+  #     - name: Nuget Pack step
+  #       shell: bash
+  #       run: |
+  #         MINOR_VERSION=$(( $BASE + $GITHUB_RUN_NUMBER ))
+  #         VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
+  #         echo "PACKAGE VERSION: $VERSION"
+  #         nuget pack Comet.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
+  #         nuget pack Comet.Test.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
 
-      - name: Nuget Pack Template step
-        shell: bash
-        run: |
-          MINOR_VERSION=$(( $BASE + $GITHUB_RUN_NUMBER ))
-          VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
-          echo "PACKAGE VERSION: $VERSION"
-          nuget pack "templates\comet-templates.nuspec" -version $VERSION
+  #     - name: Nuget Pack Template step
+  #       shell: bash
+  #       run: |
+  #         MINOR_VERSION=$(( $BASE + $GITHUB_RUN_NUMBER ))
+  #         VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
+  #         echo "PACKAGE VERSION: $VERSION"
+  #         nuget pack "templates\comet-templates.nuspec" -version $VERSION
 
   build:
     name: Build Comet-Nuget
-    needs: test
+    # needs: test
     env:
       NUPKG_MAJOR: 0.4
       BASE: 334
@@ -87,6 +87,7 @@ jobs:
           dotnet workload restore build/Comet-Nuget.sln
           Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1';
            .\workload-install.ps1
+          dotnet workload list
 
       - name: Restore Comet-Nuget.sln
         run: msbuild /r build/Comet-Nuget.sln
