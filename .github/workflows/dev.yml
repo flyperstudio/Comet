@@ -14,11 +14,18 @@ jobs:
   test:
     name: Test Comet
     runs-on: macos-latest
+    env:
+      NUPKG_MAJOR: 0.4
+      BASE: 334
+
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
 
+      - name: Install Nuget CLI
+        run: brew install nuget
+ 
       - name: Install Maui Workload
         shell: bash
         run: |
@@ -35,6 +42,26 @@ jobs:
           path: "tests/Comet.Tests.Cases/TestResults/test-results.trx"
           reporter: "dotnet-trx"
 
+      - name: Build Comet-Nuget.sln
+        run: dotnet build build/Comet-Nuget.sln
+
+      - name: Nuget Pack step
+        shell: bash
+        run: |
+          MINOR_VERSION=$(( $BASE + $GITHUB_RUN_NUMBER ))
+          VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
+          echo "PACKAGE VERSION: $VERSION"
+          nuget pack Comet.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
+          nuget pack Comet.Test.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
+
+      - name: Nuget Pack Template step
+        shell: bash
+        run: |
+          MINOR_VERSION=$(( $BASE + $GITHUB_RUN_NUMBER ))
+          VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
+          echo "PACKAGE VERSION: $VERSION"
+          nuget pack "templates\comet-templates.nuspec" -version $VERSION
+          
   build:
     name: Build Comet-Nuget
     needs: test
