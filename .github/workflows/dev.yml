@@ -78,8 +78,9 @@ jobs:
           distribution: "zulu" # See 'Supported distributions' for available options
           java-version: "11"
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
 
       - name: Install Maui Workload
         shell: pwsh
@@ -87,8 +88,9 @@ jobs:
           dotnet workload restore build/Comet-Nuget.sln
           Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1';
            .\workload-install.ps1
-          dotnet workload install ios
+          dotnet workload install maui
           dotnet workload list
+          dotnet --version
 
       - name: Restore Comet-Nuget.sln
         run: dotnet restore build/Comet-Nuget.sln
