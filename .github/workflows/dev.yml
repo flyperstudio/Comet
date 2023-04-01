@@ -28,6 +28,7 @@ jobs:
         run: |
           dotnet workload restore build/Comet-Tests.sln
           curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | sudo bash
+          dotnet workload install maui-windows
           dotnet workload list
 
       - name: Run tests
