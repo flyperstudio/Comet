@@ -75,6 +75,7 @@ jobs:
           VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
           echo "PACKAGE VERSION: $VERSION"
           nuget pack Comet.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
+          nuget pack Comet.Test.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
 
       - name: Nuget Pack Template step
         shell: bash
