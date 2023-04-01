@@ -59,8 +59,9 @@ jobs:
       - name: Install Maui Workload
         shell: pwsh
         run: |
-          & dotnet workload install maui `
-            --skip-sign-check `
+          dotnet workload restore build/Comet-Nuget.sln
+          Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1';
+           .\workload-install.ps1
 
       - name: Restore Comet-Nuget.sln
         run: msbuild /r build/Comet-Nuget.sln
