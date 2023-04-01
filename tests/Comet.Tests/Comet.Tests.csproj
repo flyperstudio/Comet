@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net7.0</TargetFrameworks>
-    <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+    <MauiVersion>7.0.59</MauiVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Comet.SourceGenerator\Comet.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
