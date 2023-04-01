@@ -23,9 +23,6 @@ jobs:
         with:
           submodules: true
 
-      - name: Install Nuget CLI
-        run: brew install nuget
- 
       - name: Install Maui Workload
         shell: bash
         run: |
@@ -61,7 +58,7 @@ jobs:
           VERSION=$NUPKG_MAJOR.$MINOR_VERSION-alpha
           echo "PACKAGE VERSION: $VERSION"
           nuget pack "templates\comet-templates.nuspec" -version $VERSION
-          
+
   build:
     name: Build Comet-Nuget
     needs: test
