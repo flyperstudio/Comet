@@ -91,10 +91,10 @@ jobs:
           dotnet workload list
 
       - name: Restore Comet-Nuget.sln
-        run: msbuild /r build/Comet-Nuget.sln
+        run: dotnet restore build/Comet-Nuget.sln
 
       - name: Build Comet-Nuget.sln
-        run: msbuild build/Comet-Nuget.sln
+        run: dotnet build build/Comet-Nuget.sln
 
       - name: Nuget Pack step
         shell: bash
