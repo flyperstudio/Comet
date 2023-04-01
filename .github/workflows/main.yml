@@ -63,6 +63,7 @@ jobs:
           VERSION=$NUPKG_MAJOR.$MINOR_VERSION-beta
           echo "PACKAGE VERSION: $VERSION"
           nuget pack Comet.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
+          nuget pack Comet.Test.nuspec -version $VERSION -Symbols -SymbolPackageFormat snupkg
 
       - uses: actions/upload-artifact@v2
         name: Upload Nuget Artifact
