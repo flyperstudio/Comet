@@ -82,8 +82,8 @@ jobs:
         with:
           dotnet-version: '7.0.x'
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+      # - name: Add msbuild to PATH
+      #   uses: microsoft/setup-msbuild@v1.1
 
       - name: Install Maui Workload
         shell: pwsh
@@ -95,10 +95,12 @@ jobs:
           dotnet --version
 
       - name: Restore Comet-Nuget.sln
-        run: msbuild /r build/Comet-Nuget.sln
+        # run: msbuild /r build/Comet-Nuget.sln
+        run: dotnet restore build/Comet-Nuget.sln
 
       - name: Build Comet-Nuget.sln
-        run: msbuild build/Comet-Nuget.sln
+        # run: msbuild build/Comet-Nuget.sln
+        run: dotnet msbuild build/Comet-Nuget.sln
 
       - name: Nuget Pack step
         shell: bash
