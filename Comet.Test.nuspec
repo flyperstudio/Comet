@@ -24,5 +24,6 @@
   </metadata>
   <files>
     <file src="tests/Comet.Tests/bin/Debug/net7.0/Comet.Tests.dll" target="lib/net7.0/Comet.Tests.dll"/>
+    <file src="tests/Comet.Tests/bin/Debug/net7.0/Comet.Tests.pdb" target="lib/net7.0/Comet.Tests.pdb"/>
   </files>
 </package>
