@@ -40,6 +40,15 @@ jobs:
            .\workload-install.ps1
           dotnet workload list
 
+      - name: Run tests
+        run: dotnet test tests/Comet.Tests.Cases/Comet.Tests.Cases.csproj --logger "trx;LogFileName=test-results.trx"
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: test-results
+          path: "tests/Comet.Tests.Cases/TestResults/test-results.trx"
+          reporter: "dotnet-trx"
+
       - name: Restore Comet-Nuget.sln
         run: dotnet restore build/Comet-Nuget.sln
 

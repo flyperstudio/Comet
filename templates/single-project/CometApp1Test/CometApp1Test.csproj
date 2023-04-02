@@ -20,7 +20,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="FlyperStudio.Comet.Test" Version="0.4.383-alpha" />
+    <PackageReference Include="FlyperStudio.Comet.Test" Version="0.4.340-beta" />
   </ItemGroup>
 
   <ItemGroup>
