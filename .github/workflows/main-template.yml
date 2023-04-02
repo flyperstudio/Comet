@@ -25,21 +25,6 @@ jobs:
         with:
           submodules: true
 
-      - name: install .NET
-        shell: pwsh
-        run: |
-          $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest -Uri "https://dot.net/v1/dotnet-install.ps1" -OutFile dotnet-install.ps1
-          & .\dotnet-install.ps1 -InstallDir "$env:ProgramFiles\dotnet\" -Verbose -Channel STS
-          & dotnet --list-sdks
-
-      # - name: Install Visual Studio Preview
-      #   shell: pwsh
-      #   run: powershell .\build\install-vs.ps1
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
-
       - name: Nuget Pack Template step
         shell: bash
         run: |
@@ -67,11 +52,6 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: nuget-artifact
-
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.100
 
       - name: Setup NuGet
         uses: nuget/setup-nuget@v1
