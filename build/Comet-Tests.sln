@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comet.Tests", "..\tests\Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comet.SourceGenerator", "..\src\Comet.SourceGenerator\Comet.SourceGenerator.csproj", "{61D981D5-4D0F-4E2B-946D-838FCB02B835}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comet.Tests.Cases", "..\tests\Comet.Tests.Cases\Comet.Tests.Cases.csproj", "{7E02376B-63A5-47C6-935E-51D43784C059}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{61D981D5-4D0F-4E2B-946D-838FCB02B835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61D981D5-4D0F-4E2B-946D-838FCB02B835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61D981D5-4D0F-4E2B-946D-838FCB02B835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E02376B-63A5-47C6-935E-51D43784C059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E02376B-63A5-47C6-935E-51D43784C059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E02376B-63A5-47C6-935E-51D43784C059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E02376B-63A5-47C6-935E-51D43784C059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
