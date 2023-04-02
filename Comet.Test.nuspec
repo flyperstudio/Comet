@@ -16,8 +16,6 @@
     <language>C#</language>
     <dependencies>
       <group targetFramework="net7.0">
-        <dependency id="Microsoft.Maui.Graphics" version="7.0.59" />
-        <dependency id="Microsoft.Maui.Essentials" version="7.0.59" />
         <dependency id="FlyperStudio.Comet" version="0.4.339-beta" />
       </group>
     </dependencies>
