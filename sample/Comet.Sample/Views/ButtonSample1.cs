@@ -8,15 +8,9 @@ namespace Comet.Samples
 		public DemoButtonStyle()
 		{
 			TextColor = Colors.Red;
-			BackgroundColor = new StyleAwareValue<ControlState, Color>
-				{
-					[ControlState.Default] = Colors.White,
-					[ControlState.Hovered] = Colors.Blue,
-					[ControlState.Pressed] = Colors.Red
-				};
-			Border = new RoundedRectangle(4f).Stroke(Colors.Grey, 1f, true);
-			Shadow = new Graphics.Shadow().WithColor(Colors.Grey).WithRadius(1).WithOffset(new Point(1, 1));
-			Padding = new Thickness(30, 50);
+			BackgroundColor = Colors.White;
+			Border = new RoundedRectangle(5).Stroke(Colors.Red, 1.5f, true);
+			Shadow = new Graphics.Shadow().WithColor(Colors.White).WithRadius(1).WithOffset(new Point(1, 1));
 		}
 	}
 	public class ButtonSample1 : View
@@ -27,6 +21,7 @@ namespace Comet.Samples
 		View body() => new VStack
 		{
 			new Button("Increment Value", () => count.Value ++ )
+				.Frame(200,40)
 				.HorizontalLayoutAlignment(LayoutAlignment.Center)
 				.VerticalLayoutAlignment(LayoutAlignment.Center)
 				.Apply<DemoButtonStyle>(),
