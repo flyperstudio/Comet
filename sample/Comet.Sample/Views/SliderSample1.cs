@@ -17,15 +17,15 @@ struct ContentView : View {
 */
 namespace Comet.Samples
 {
-    public class DemoSlideStyle : SliderStyle
-    {
-        public DemoSlideStyle()
-        {
+	public class DemoSlideStyle : SliderStyle
+	{
+		public DemoSlideStyle()
+		{
 			TrackColor = Colors.Blue;
 			ProgressColor = Colors.Green;
-            ThumbColor = Colors.Red;
-        }
-    }
+			ThumbColor = Colors.Red;
+		}
+	}
 
 	public class SliderSample1 : View
 	{

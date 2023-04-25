@@ -6,7 +6,6 @@ namespace Comet.Samples
 	{
 		public DemoProgressBarStyle()
 		{
-			TrackColor = Colors.Blue;
 			ProgressColor = Colors.Green;
 		}
 	}

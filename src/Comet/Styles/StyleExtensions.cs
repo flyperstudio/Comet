@@ -123,6 +123,8 @@ namespace Comet
 			T style = new T();
 			var result = Apply(button, styleId, style);
 			result.SetEnvironment(styleId, EnvironmentKeys.Colors.Color, style.TextColor);
+			result.SetEnvironment(styleId, EnvironmentKeys.Button.Padding, style.Padding);
+			result.SetEnvironment(styleId, EnvironmentKeys.Fonts.Font, style.TextFont);
 			result.StyleId = styleId;
 			return result;
 		}
@@ -132,7 +134,6 @@ namespace Comet
 			string styleId = GetStyleId<T>();
 			T style = new T();
 			var result = Apply(progressBar, styleId, style);
-			result.SetEnvironment(styleId, EnvironmentKeys.ProgressBar.TrackColor, style.TrackColor);
 			result.SetEnvironment(styleId, EnvironmentKeys.ProgressBar.ProgressColor, style.ProgressColor);
 			result.StyleId = styleId;
 			return result;
