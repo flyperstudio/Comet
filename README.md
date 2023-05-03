@@ -1,5 +1,5 @@
 # Comet ☄️
-[![dev-build](https://github.com/dotnet/Comet/actions/workflows/dev.yml/badge.svg)](https://github.com/dotnet/Comet/actions/workflows/dev.yml)  [![Clancey.Comet on fuget.org](https://www.fuget.org/packages/FlyperStudio.Comet/badge.svg)](https://www.fuget.org/packages/FlyperStudio.Comet)
+[![dev-build](https://github.com/dotnet/Comet/actions/workflows/dev.yml/badge.svg)](https://github.com/dotnet/Comet/actions/workflows/dev.yml)  [![NuGet version (FlyperStudio.Comet)](https://img.shields.io/nuget/v/FlyperStudio.Comet.svg?style=?style=plastic)](https://www.nuget.org/packages/FlyperStudio.Comet/)
 [Chat on Discord](https://discord.gg/7Ms7ptM)
 
 **This is a fork of Comet as it current under maintain for now**
