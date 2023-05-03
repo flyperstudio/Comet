@@ -12,7 +12,7 @@ Watch this video to get a preview of the developer experience:
 
 ## Getting Started
 
-When you're ready to take a ride on the Comet, head over to the wiki and follow the [Getting Started](https://github.com/Clancey/Comet/wiki/Getting-Started) guide.
+When you're ready to take a ride on the Comet, head over to the wiki and follow the [Getting Started](https://github.com/flyperstudio/Comet/wiki/Getting-Started) guide.
 
 ## Key Concepts
 
