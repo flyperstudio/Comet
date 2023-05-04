@@ -621,13 +621,6 @@ namespace Comet
 			this.SetFrameFromPlatformView(frame);
 			if (BuiltView != null)
 				BuiltView.LayoutSubviews(frame);
-			else if (this is ContainerView container)
-			{
-				foreach (var view in container)
-				{
-					view.LayoutSubviews(this.Frame);
-				}
-			}
 		}
 		public override string ToString() => $"{this.GetType()} - {this.Id}";
 
