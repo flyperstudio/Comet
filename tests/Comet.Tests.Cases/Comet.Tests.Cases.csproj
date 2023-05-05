@@ -15,9 +15,11 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="FlyperStudio.Comet" Version="0.4.339-beta" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Comet.Tests\Comet.Tests.csproj" />
+        <ProjectReference Include="..\..\src\Comet.SourceGenerator\Comet.SourceGenerator.csproj"
+            OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\..\src\Comet\Comet.csproj" />
+        <ProjectReference Include="..\Comet.Tests\Comet.Tests.csproj" />
     </ItemGroup>
 </Project>

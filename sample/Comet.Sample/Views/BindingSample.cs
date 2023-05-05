@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Comet.Samples
 {
-	public class BindingSample : View
+	public class BindingSample : NavigationView
 	{
 		class MyBindingObject : BindingObject
 		{
@@ -36,7 +36,7 @@ namespace Comet.Samples
 		}
 
 		View Build() =>
-			new NavigationView{ new ScrollView
+			new ScrollView
 			{
 				new VStack
 				{
@@ -59,7 +59,6 @@ namespace Comet.Samples
 					},
 					new Toggle(state.CanEdit)
 				}
-			}
 		};
 	}
 }

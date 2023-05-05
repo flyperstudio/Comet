@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Comet.Samples
 {
-	public class Issue125 : View
+	public class Issue125 : NavigationView
 	{
 		private class TodoItem
 		{
@@ -24,9 +24,10 @@ namespace Comet.Samples
 
 
 		[Body]
-		View body() => new NavigationView{
-			new ListView<TodoItem>(items){
-				ViewFor = (item)=>new ContentView{
+		View body() =>
+			new ListView<TodoItem>(items)
+			{
+				ViewFor = (item) => new ContentView{
 					new HStack
 					{
 						new Text(item.Name).Alignment( Alignment.Leading),
@@ -34,7 +35,6 @@ namespace Comet.Samples
 						new Toggle(item.Done).Alignment(Alignment.Center)
 					}.Margin(6)
 				}.FillHorizontal()
-			}.Title("Tasky"),
-		};
+			}.Title("Tasky");
 	}
 }

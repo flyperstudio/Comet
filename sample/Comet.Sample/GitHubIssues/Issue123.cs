@@ -4,12 +4,12 @@ using Microsoft.Maui.Graphics;
 
 namespace Comet.Samples
 {
-	public class Issue123 : View
+	public class Issue123 : NavigationView
 	{
 		private readonly State<int> count = 0;
 
 		[Body]
-		View body() => new NavigationView{ new VStack
+		View body() => new VStack
 			{
 				new Text(() => $"Value: {count.Value}")
 					.Color(Colors.Black)
@@ -18,9 +18,7 @@ namespace Comet.Samples
 					.Frame(width:320, height:44)
 					.Background(Colors.Black)
 					.Color(Colors.White)
-					.Margin(20)
-				,
-			}
+					.Margin(20),
 		};
 	}
 }
