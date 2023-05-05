@@ -105,7 +105,6 @@ namespace Comet
 			var frame = new StackFrame(1);
 			string className = frame.GetMethod().DeclaringType.Name;
 			string styleId = $"{className}.{typeof(T)}";
-			Console.WriteLine($"$Get style Id {styleId}");
 			return styleId;
 		}
 
