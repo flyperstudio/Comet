@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net7.0</TargetFrameworks>
-    <MauiVersion>7.0.81</MauiVersion>
+    <MauiVersion>7.0.86</MauiVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Comet.SourceGenerator\Comet.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
