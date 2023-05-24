@@ -33,11 +33,8 @@ namespace Comet.Tests.Cases
 			var text = view.GetViewWithTag("text");
 
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
-			// As the size of Text is hard code in test case, so we can only check is height in here.
 			Assert.Equal(new Rect(0, 0, 320, 12), stack.Frame);
-			// In container view it should not set frame to child
-			Assert.Equal(new Rect(0, 0, 0, 0), text.Frame);
-			Assert.Equal(12, text.MeasuredSize.Height);
+			Assert.Equal(new Rect(0, 0, 40, 12), text.Frame);
 		}
 
 		public class TextFieldInVStackTestView : View
@@ -47,10 +44,7 @@ namespace Comet.Tests.Cases
 			[Body]
 			View body() => new VStack()
 			{
-				new TextField(text)
-				.FillHorizontal()
-				.Tag("textfield")
-				.Frame(100, 50),
+				new TextField(text).FillHorizontal().Tag("textfield"),
 			}.FillHorizontal()
 			.FitVertical()
 			.Padding(new Thickness())
@@ -67,8 +61,8 @@ namespace Comet.Tests.Cases
 			var textfield = view.GetViewWithTag("textfield");
 
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
-			Assert.Equal(new Rect(0, 0, 320, 50), stack.Frame);
-			Assert.Equal(new Size(100, 50), textfield.MeasuredSize);
+			Assert.Equal(new Rect(0, 0, 320, 12), stack.Frame);
+			Assert.Equal(new Rect(0, 0, 320, 12), textfield.Frame);
 		}
 
 		public class SecureFieldInVStackTestView : View
@@ -96,7 +90,7 @@ namespace Comet.Tests.Cases
 
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 12), stack.Frame);
-			Assert.Equal(12, securefield.MeasuredSize.Height);
+			Assert.Equal(new Rect(0, 0, 320, 12), securefield.Frame);
 		}
 
 		public class SliderInVStackTestView : View
@@ -122,7 +116,7 @@ namespace Comet.Tests.Cases
 
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 20), stack.Frame);
-			Assert.Equal(new Size(100, 20), slider.MeasuredSize);
+			Assert.Equal(new Rect(0, 0, 320, 20), slider.Frame);
 		}
 
 		public class ProgressBarInVStackTestView : View
@@ -148,7 +142,7 @@ namespace Comet.Tests.Cases
 
 			Assert.Equal(new Rect(0, 0, 320, 600), view.Frame);
 			Assert.Equal(new Rect(0, 0, 320, 20), stack.Frame);
-			Assert.Equal(new Size(100, 20), progressbar.MeasuredSize);
+			Assert.Equal(new Rect(0, 0, 320, 20), progressbar.Frame);
 		}
 
 		[Fact]
