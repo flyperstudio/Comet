@@ -160,14 +160,6 @@ namespace Comet.Samples
 
 			}.RoundedBorder(color: Colors.Grey).FillHorizontal();
 		}
-
-		//class CCText : Text
-		//{
-		//    public CCText(Binding<string> val) : base(val)
-		//    {
-		//    }
-
-		//}
 	}
 
 
