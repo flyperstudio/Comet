@@ -38,6 +38,7 @@ namespace Comet.Samples
 			new MenuItem("ListViewSample1", ()=> new ListViewSample1()),
 			new MenuItem("ListViewSample2", ()=> new ListViewSample2()),
 			new MenuItem("ListViewSample3", ()=> new ListViewSample3()),
+			new MenuItem("ListViewSample4", ()=> new ListViewSample4()),
 			new MenuItem("Insane Diff", ()=> new InsaneDiffPage()),
 			new MenuItem("ButtonSample1", ()=> new ButtonSample()),
 			new MenuItem("ClipSample1", ()=> new ClipSample1()),
